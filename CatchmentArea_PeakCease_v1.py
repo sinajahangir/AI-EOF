@@ -13,7 +13,7 @@ class CatchmentArea:
         Parameters
         ----------
         area : float
-            Catchment area in square km.
+            Catchment area in square km
 
         Returns
         -------
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     N=CatchmentArea(catchment_area).report_cessation_days()
     N_star=CatchmentArea().closest_odd_integer(N=N)
     plt.figure(dpi=300)
-    plt.plot(catchment_area,N_star)
+    plt.plot(catchment_area,N_star,c='r',lw=3)
     plt.xlabel('Catchment Area')
     plt.ylabel('2N* (filter size)')
                 
