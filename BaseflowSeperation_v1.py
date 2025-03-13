@@ -46,7 +46,7 @@ class BaseflowSeparation:
             minima_indices,
             self.discharge_series[minima_indices]
         )
-        return  baseflow
+        return  np.minimum(baseflow, self.discharge_series)
     
     def separate_baseflow_lm(self):
         """
@@ -68,7 +68,7 @@ class BaseflowSeparation:
             end = min(len(self.discharge_series), i + half_window + 1)
             baseflow[i] = np.min(self.discharge_series[start:end])
         
-        return  baseflow
+        return  np.minimum(baseflow, self.discharge_series)
     
     def separate_baseflow_si(self):
         """
@@ -88,7 +88,7 @@ class BaseflowSeparation:
             min_val = np.min(self.discharge_series[i:end])
             baseflow[i:end] = min_val
         
-        return baseflow
+        return np.minimum(baseflow, self.discharge_series)
     
     def separate_baseflow_f(self):
         """
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     df=pd.read_csv(r'D:\Paper\Code\EOF\AI-EOF\Sample data\CamelsRegionaltest_0_camels_01022500.csv')
     discharge_series=df.loc[:365,'q']
     # Apply baseflow separation
-    N = 3
+    N = 5
     
     
     baseflow_sep = BaseflowSeparation(discharge_series, N)

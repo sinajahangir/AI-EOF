@@ -54,7 +54,7 @@ if __name__ == "__main__":
     N_star=CatchmentArea().closest_odd_integer(N=N)
     plt.figure(dpi=300)
     plt.plot(catchment_area,N_star,c='r',lw=3)
-    plt.xlabel('Catchment Area')
+    plt.xlabel('Catchment Area (km2)')
     plt.ylabel('2N* (filter size)')
                 
     
